@@ -8,15 +8,14 @@ all: $(PROGS)
 	$(CC) $(CFLAGS) -o $@ $<
 
 #TODO: this rule is not working - does not rebuild programs for out files
-%.out: $(PROGS)
+%.out: %
 
 %.out: %.in %.ans
 	./$* < $*.in > $*.out
 
 test: $(TESTS)
-
 %.test: %.out %.ans
-	diff $^ > $@
+	diff $^ > $@ || cat $@ && false
 
 .PHONY: all tests clean
 .DELETE_ON_ERROR: $(TESTS)
