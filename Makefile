@@ -15,7 +15,7 @@ all: $(PROGS)
 
 test: $(TESTS)
 %.test: %.out %.ans
-	diff $^ > $@ || cat $@ && false
+	diff $^ > $@ || ( cat $@ && false )
 
 .PHONY: all tests clean
 .DELETE_ON_ERROR: $(TESTS)
