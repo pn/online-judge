@@ -20,4 +20,4 @@ test: $(TESTS)
 .PHONY: all tests clean
 .DELETE_ON_ERROR: $(TESTS)
 clean:
-	-rm $(PROGS) *.out *.test
+	-@rm $(PROGS) *.out *.test 2>/dev/null
